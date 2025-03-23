@@ -1,1 +1,0 @@
-import{j as e}from"./client-DdK_1Wox.js";const i=function(){return e.jsx("div",{className:"p-2 flex justify-center items-center style={{ marginTop: '100px' }}",children:e.jsx("h1",{className:"text-center",children:"Liminal TanStack Application"})})};export{i as component};
