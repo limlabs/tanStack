@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "predeploy": "mkdir -p dist && cp -r .vinxi/build/client/_build/* dist/",
     "start": "vinxi start"
   },
   "dependencies": {
