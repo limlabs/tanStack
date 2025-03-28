@@ -7,5 +7,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/ssr"  # Ensure this is correct
+  to = "/.netlify/functions/ssr.js"  # Ensure this is correct
   status = 200
