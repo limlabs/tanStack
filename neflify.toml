@@ -1,12 +1,9 @@
 [build]
-  command = "echo NITRO_PRESET=$NITRO_PRESET && npm run build"
-  publish = ".output/public"
-  environment = { NITRO_PRESET = "netlify" }
-
-[functions]
-  directory = ".netlify/functions-internal"
+  command = "npm run build"      # Run your regular build command
+  publish = "build"              # Publish folder for a React app (ensure this matches the build output folder)
 
 [[redirects]]
-  from = "/*"
-  to = "/.netlify/functions-internal/server"
+  from = "/*"                    # Redirect all requests to index.html for client-side routing
+  to = "/index.html"             # React Router handles client-side routing
   status = 200
+  force = true                   # Ensures redirect even for non-existent files
