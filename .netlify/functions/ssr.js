@@ -1,4 +1,5 @@
 import { default as ssrApp } from "../../.output/server/index.mjs";  // Adjust this path if needed
+import { parse } from "querystring"; // For parsing query params or cookies, if required
 
 // The SSR handler function for Netlify
 exports.handler = async function(event, context) {
