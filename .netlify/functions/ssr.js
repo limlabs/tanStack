@@ -1,15 +1,19 @@
-// Import the SSR entry point (your generated SSR code)
 import { default as ssrApp } from "../../.output/server/index.mjs";  // Adjust this path if needed
-import { parse } from "querystring"; // For parsing query params or cookies, if required
 
 // The SSR handler function for Netlify
 exports.handler = async function(event, context) {
-  // Parse the incoming event data (if needed)
-  const request = event;
+  // Log the incoming request to check if it's being received properly
+  console.log("Received event:", event);
 
   try {
-    // You can modify this to pass data, handle query parameters, etc.
-    const html = await ssrApp.render(request);  // Assuming `ssrApp.render` is your SSR rendering function
+    // Check if ssrApp is properly imported
+    console.log("SSR App loaded:", ssrApp);
+
+    // Attempt SSR rendering
+    const html = await ssrApp.render(event);  // Assuming ssrApp.render() works for SSR
+
+    // Log the generated HTML to verify it looks correct
+    console.log("Generated HTML:", html);
 
     return {
       statusCode: 200,
@@ -19,7 +23,9 @@ exports.handler = async function(event, context) {
       },
     };
   } catch (err) {
-    // Error handling if SSR fails
+    // Log the error if SSR fails
+    console.error("SSR error:", err);
+
     return {
       statusCode: 500,
       body: JSON.stringify({ message: "SSR error", error: err.message }),
