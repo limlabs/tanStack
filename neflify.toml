@@ -3,7 +3,7 @@
   publish = ".output/public"
 
 [functions]
-  directory = ".netlify/functions"  # This points to the directory where SSR functions are placed
+  directory = "/.netlify/functions"  # This points to the directory where SSR functions are placed
 
 [[redirects]]
   from = "/*"

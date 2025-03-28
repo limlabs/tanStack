@@ -1,1 +1,6 @@
-import{h as u}from"./assets/ssr-sDgp_4G2.js";import"react/jsx-runtime";import"@tanstack/react-router";import"@tanstack/router-devtools";import"@tanstack/start-client-core";import"@tanstack/router-core";import"@tanstack/start-server-core";import"redaxios";import"tiny-invariant";import"node:stream";import"isbot";import"react-dom/server";export{u as default};
+exports.handler = async () => {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "SSR function works!" }),
+    };
+  };
