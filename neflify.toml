@@ -1,5 +1,5 @@
 [build]
-  command = "echo $NITRO_PRESET && npm run build"
+  command = "echo NITRO_PRESET=$NITRO_PRESET && npm run build"
   publish = ".output/public"
   environment = { NITRO_PRESET = "netlify" }
 
