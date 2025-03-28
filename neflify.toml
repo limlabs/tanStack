@@ -3,9 +3,9 @@
   publish = ".output/public"
 
 [functions]
-  directory = ".netlify/functions-internal"
+  directory = "functions"  # This points to the directory where SSR functions are placed
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions-internal/server"
+  to = "/.netlify/functions/ssr"  # Ensure this is correct
   status = 200
