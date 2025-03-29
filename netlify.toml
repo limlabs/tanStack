@@ -3,9 +3,14 @@
   publish = ".output/public"
 
 [functions]
-  directory = ".netlify/functions"  # This points to the directory where SSR functions are placed
+  directory = ".netlify/functions-internal"
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/ssr.js"  # Ensure this is correct
+  to = "/.netlify/functions-internal/server"
   status = 200
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+  
+
