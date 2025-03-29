@@ -1,11 +1,19 @@
-[build]
-  command = "npm run build"
-  publish = ".output/public"
+# Default environment variables for the build process
+[build.environment]
+  NITRO_PRESET = "netlify"
 
-[functions]
-  directory = ".netlify/functions-internal"
+# Production environment-specific settings
+[context.production.environment]
+  NITRO_PRESET = "netlify"
 
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions-internal/server"
-  status = 200
+# Deploy preview-specific settings
+[context.deploy-preview.environment]
+  NITRO_PRESET = "netlify"
+
+# Branch deploy-specific settings
+[context.branch-deploy.environment]
+  NITRO_PRESET = "netlify"
+
+# Local environment (Netlify CLI) settings
+[context.local.environment]
+  NITRO_PRESET = "netlify"
