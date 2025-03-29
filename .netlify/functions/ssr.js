@@ -1,20 +1,25 @@
-import { default as ssrApp } from "../../.output/server/index.mjs";  // Adjust this path if needed
-import { parse } from "querystring"; // For parsing query params or cookies, if required
+// .netlify/functions/ssr.js
+import { default as ssrApp } from "../../.output/server/index.mjs";  // Ensure path is correct
 
-// The SSR handler function for Netlify
 exports.handler = async function(event, context) {
-  // Log the incoming request to check if it's being received properly
-  console.log("Received event:", event);
+  // Log incoming request details for debugging
+  console.log("Received event:", JSON.stringify(event, null, 2));  // Log entire event for full context
+  console.log("Request headers:", JSON.stringify(event.headers, null, 2)); // Log headers
+  console.log("Request body:", event.body); // Log body content
 
   try {
-    // Check if ssrApp is properly imported
-    console.log("SSR App loaded:", ssrApp);
+    // Check if ssrApp is properly loaded
+    if (!ssrApp || typeof ssrApp.render !== 'function') {
+      throw new Error("SSR App or render function not loaded correctly");
+    }
+
+    console.log("SSR App loaded successfully.");
 
     // Attempt SSR rendering
-    const html = await ssrApp.render(event);  // Assuming ssrApp.render() works for SSR
+    const html = await ssrApp.render(event);  // Make sure render() is working properly
 
-    // Log the generated HTML to verify it looks correct
-    console.log("Generated HTML:", html);
+    // Log the generated HTML (or part of it) for verification
+    console.log("Generated HTML:", html.slice(0, 500)); // Only log a snippet to avoid excessive output
 
     return {
       statusCode: 200,
@@ -25,7 +30,7 @@ exports.handler = async function(event, context) {
     };
   } catch (err) {
     // Log the error if SSR fails
-    console.error("SSR error:", err);
+    console.error("SSR error:", err.message);
 
     return {
       statusCode: 500,
