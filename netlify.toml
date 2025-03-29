@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = ".output/public"
+  publish = ".output"
 
 [functions]
   directory = ".netlify/functions-internal"
@@ -29,7 +29,3 @@
 # Local environment (Netlify CLI) settings
 [context.local.environment]
   NITRO_PRESET = "netlify"
-
-  # Correctly set the publish directory for deployment
-[build.publish]
-  path = ".output/public"
