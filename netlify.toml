@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && cp -r .vinxi/build/. .output"
+  command = "npm run build && test -d .vinxi/build && cp -r .vinxi/build/. .output"
   publish = ".output/public"
 
 [functions]
