@@ -8,5 +8,9 @@ export default defineConfig({
         projects: ['./tsconfig.json'],
       }),
     ],
+    build: {
+      // Ensure assets are placed in the correct directory
+      assetsDir: 'assets',
+    },
   },
 })
