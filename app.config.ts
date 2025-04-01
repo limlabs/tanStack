@@ -9,5 +9,9 @@ export default defineConfig({
         projects: ['./tsconfig.json'],
       }),
     ],
+    build: {
+      manifest: true,
+      assetsDir: '_build/dist',
+    }
   },
 })
