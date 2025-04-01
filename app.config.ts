@@ -11,11 +11,15 @@ export default defineConfig({
     build: {
       // Ensure assets are placed in the correct directory
       assetsDir: 'assets',
-      rollupOptions:{
+      rollupOptions: {
         output: {
-          assetFileNames: 'assets/[name]-[hash][extname]',
-        }
-      }
+          assetFileNames: ({ name }) => {
+            // Force the file name (without hash/extension) to lower-case
+            const lowerName = name ? name.toLowerCase() : 'asset'
+            return `assets/${lowerName}-[hash][extname]`
+          },
+        },
+      },
     },
   },
 })
