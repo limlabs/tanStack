@@ -1,12 +1,6 @@
 [build]
   command = "npm run build"
 
-[[redirects]]
-  from = "/_build/assets/*"
-  to = "/dist/assets/:splat"
-  status = 200
-  force = true
-
 # Default environment variables for the build process
 [build.environment]
   NITRO_PRESET = "netlify"
