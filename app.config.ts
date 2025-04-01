@@ -12,6 +12,14 @@ export default defineConfig({
     build: {
       manifest: true,
       assetsDir: 'assets',
-    }
+      rollupOptions: {
+        output: {
+          assetFileNames: ({ name }) => {
+            const baseName = name ? path.parse(name).name : 'asset'
+            return `assets/${baseName}-[hash][extname]`
+          },
+        },
+      },
+    },
   },
 })
