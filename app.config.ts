@@ -11,6 +11,7 @@ export default defineConfig({
     ],
     build: {
       // Ensure assets are placed in the correct directory
+      manifest: true,
       assetsDir: 'assets',
       rollupOptions: {
         output: {
