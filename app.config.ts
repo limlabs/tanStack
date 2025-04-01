@@ -11,7 +11,7 @@ export default defineConfig({
     ],
     build: {
       manifest: true,
-      assetsDir: '_build/dist',
+      assetsDir: 'dist',
     }
   },
 })
