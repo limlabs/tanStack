@@ -15,10 +15,8 @@ export default defineConfig({
       rollupOptions: {
         output: {
           assetFileNames: ({ name }) => {
-            // Get the base name (without extension) and force lower-case.
             const base = name ? path.parse(name).name : 'asset'
-            // Construct the asset name and force the entire string to lower-case.
-            return `assets/${(base + '-[hash][extname]').toLowerCase()}`
+            return `assets/${base}-[hash][extname]`
           },
         },
       },
