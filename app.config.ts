@@ -1,5 +1,6 @@
 import { defineConfig } from '@tanstack/react-start/config'
 import tsConfigPaths from 'vite-tsconfig-paths'
+import * as path from 'path'
 
 export default defineConfig({
   vite: {
@@ -14,9 +15,11 @@ export default defineConfig({
       rollupOptions: {
         output: {
           assetFileNames: ({ name }) => {
-            // Force the file name (without hash/extension) to lower-case
-            const lowerName = name ? name.toLowerCase() : 'asset'
-            return `assets/${lowerName}-[hash][extname]`
+            // Remove the extension from the name and then lowercase it.
+            // For example, "app.css" becomes "app"
+            let base = name ? path.parse(name).name : 'asset'
+            base = base.toLowerCase()
+            return `assets/${base}-[hash][extname]`
           },
         },
       },
