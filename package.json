@@ -10,12 +10,16 @@
   },
   "dependencies": {
     "@tanstack/react-router": "^1.112.17",
+    "@tanstack/react-router-devtools": "^1.116.0",
     "@tanstack/react-start": "^1.112.17",
-    "@tanstack/router-devtools": "^1.112.17",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.488.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "redaxios": "^0.5.1",
     "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
     "vinxi": "0.5.3",
     "vite-tsconfig-paths": "^5.1.4"
   },

@@ -11,8 +11,16 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ServicesImport } from './routes/services'
+import { Route as ResourcesImport } from './routes/resources'
 import { Route as RedirectImport } from './routes/redirect'
+import { Route as FaqImport } from './routes/faq'
 import { Route as DeferredImport } from './routes/deferred'
+import { Route as ContactImport } from './routes/contact'
+import { Route as CaseStudiesImport } from './routes/case-studies'
+import { Route as CareersImport } from './routes/careers'
+import { Route as BlogImport } from './routes/blog'
+import { Route as AboutImport } from './routes/about'
 import { Route as PathlessLayoutImport } from './routes/_pathlessLayout'
 import { Route as UsersRouteImport } from './routes/users.route'
 import { Route as PostsRouteImport } from './routes/posts.route'
@@ -20,7 +28,14 @@ import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as PostsIndexImport } from './routes/posts.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
+import { Route as ServicesTransformationImport } from './routes/services/transformation'
+import { Route as ServicesConsultingImport } from './routes/services/consulting'
+import { Route as ServicesAutomationImport } from './routes/services/automation'
+import { Route as ResourcesWhitepapersImport } from './routes/resources/whitepapers'
+import { Route as ResourcesWebinarsImport } from './routes/resources/webinars'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
+import { Route as AboutTeamImport } from './routes/about/team'
+import { Route as AboutStoryImport } from './routes/about/story'
 import { Route as PathlessLayoutNestedLayoutImport } from './routes/_pathlessLayout/_nested-layout'
 import { Route as PostsPostIdDeepImport } from './routes/posts_.$postId.deep'
 import { Route as PathlessLayoutNestedLayoutRouteBImport } from './routes/_pathlessLayout/_nested-layout/route-b'
@@ -28,15 +43,63 @@ import { Route as PathlessLayoutNestedLayoutRouteAImport } from './routes/_pathl
 
 // Create/Update Routes
 
+const ServicesRoute = ServicesImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ResourcesRoute = ResourcesImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const RedirectRoute = RedirectImport.update({
   id: '/redirect',
   path: '/redirect',
   getParentRoute: () => rootRoute,
 } as any)
 
+const FaqRoute = FaqImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const DeferredRoute = DeferredImport.update({
   id: '/deferred',
   path: '/deferred',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ContactRoute = ContactImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CaseStudiesRoute = CaseStudiesImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CareersRoute = CareersImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogRoute = BlogImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AboutRoute = AboutImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,10 +144,52 @@ const UsersUserIdRoute = UsersUserIdImport.update({
   getParentRoute: () => UsersRouteRoute,
 } as any)
 
+const ServicesTransformationRoute = ServicesTransformationImport.update({
+  id: '/transformation',
+  path: '/transformation',
+  getParentRoute: () => ServicesRoute,
+} as any)
+
+const ServicesConsultingRoute = ServicesConsultingImport.update({
+  id: '/consulting',
+  path: '/consulting',
+  getParentRoute: () => ServicesRoute,
+} as any)
+
+const ServicesAutomationRoute = ServicesAutomationImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => ServicesRoute,
+} as any)
+
+const ResourcesWhitepapersRoute = ResourcesWhitepapersImport.update({
+  id: '/whitepapers',
+  path: '/whitepapers',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+
+const ResourcesWebinarsRoute = ResourcesWebinarsImport.update({
+  id: '/webinars',
+  path: '/webinars',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+
 const PostsPostIdRoute = PostsPostIdImport.update({
   id: '/$postId',
   path: '/$postId',
   getParentRoute: () => PostsRouteRoute,
+} as any)
+
+const AboutTeamRoute = AboutTeamImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AboutRoute,
+} as any)
+
+const AboutStoryRoute = AboutStoryImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => AboutRoute,
 } as any)
 
 const PathlessLayoutNestedLayoutRoute = PathlessLayoutNestedLayoutImport.update(
@@ -146,11 +251,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PathlessLayoutImport
       parentRoute: typeof rootRoute
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogImport
+      parentRoute: typeof rootRoute
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersImport
+      parentRoute: typeof rootRoute
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesImport
+      parentRoute: typeof rootRoute
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactImport
+      parentRoute: typeof rootRoute
+    }
     '/deferred': {
       id: '/deferred'
       path: '/deferred'
       fullPath: '/deferred'
       preLoaderRoute: typeof DeferredImport
+      parentRoute: typeof rootRoute
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqImport
       parentRoute: typeof rootRoute
     }
     '/redirect': {
@@ -160,6 +307,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RedirectImport
       parentRoute: typeof rootRoute
     }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesImport
+      parentRoute: typeof rootRoute
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesImport
+      parentRoute: typeof rootRoute
+    }
     '/_pathlessLayout/_nested-layout': {
       id: '/_pathlessLayout/_nested-layout'
       path: ''
@@ -167,12 +328,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PathlessLayoutNestedLayoutImport
       parentRoute: typeof PathlessLayoutImport
     }
+    '/about/story': {
+      id: '/about/story'
+      path: '/story'
+      fullPath: '/about/story'
+      preLoaderRoute: typeof AboutStoryImport
+      parentRoute: typeof AboutImport
+    }
+    '/about/team': {
+      id: '/about/team'
+      path: '/team'
+      fullPath: '/about/team'
+      preLoaderRoute: typeof AboutTeamImport
+      parentRoute: typeof AboutImport
+    }
     '/posts/$postId': {
       id: '/posts/$postId'
       path: '/$postId'
       fullPath: '/posts/$postId'
       preLoaderRoute: typeof PostsPostIdImport
       parentRoute: typeof PostsRouteImport
+    }
+    '/resources/webinars': {
+      id: '/resources/webinars'
+      path: '/webinars'
+      fullPath: '/resources/webinars'
+      preLoaderRoute: typeof ResourcesWebinarsImport
+      parentRoute: typeof ResourcesImport
+    }
+    '/resources/whitepapers': {
+      id: '/resources/whitepapers'
+      path: '/whitepapers'
+      fullPath: '/resources/whitepapers'
+      preLoaderRoute: typeof ResourcesWhitepapersImport
+      parentRoute: typeof ResourcesImport
+    }
+    '/services/automation': {
+      id: '/services/automation'
+      path: '/automation'
+      fullPath: '/services/automation'
+      preLoaderRoute: typeof ServicesAutomationImport
+      parentRoute: typeof ServicesImport
+    }
+    '/services/consulting': {
+      id: '/services/consulting'
+      path: '/consulting'
+      fullPath: '/services/consulting'
+      preLoaderRoute: typeof ServicesConsultingImport
+      parentRoute: typeof ServicesImport
+    }
+    '/services/transformation': {
+      id: '/services/transformation'
+      path: '/transformation'
+      fullPath: '/services/transformation'
+      preLoaderRoute: typeof ServicesTransformationImport
+      parentRoute: typeof ServicesImport
     }
     '/users/$userId': {
       id: '/users/$userId'
@@ -279,14 +489,71 @@ const PathlessLayoutRouteWithChildren = PathlessLayoutRoute._addFileChildren(
   PathlessLayoutRouteChildren,
 )
 
+interface AboutRouteChildren {
+  AboutStoryRoute: typeof AboutStoryRoute
+  AboutTeamRoute: typeof AboutTeamRoute
+}
+
+const AboutRouteChildren: AboutRouteChildren = {
+  AboutStoryRoute: AboutStoryRoute,
+  AboutTeamRoute: AboutTeamRoute,
+}
+
+const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
+
+interface ResourcesRouteChildren {
+  ResourcesWebinarsRoute: typeof ResourcesWebinarsRoute
+  ResourcesWhitepapersRoute: typeof ResourcesWhitepapersRoute
+}
+
+const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesWebinarsRoute: ResourcesWebinarsRoute,
+  ResourcesWhitepapersRoute: ResourcesWhitepapersRoute,
+}
+
+const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
+  ResourcesRouteChildren,
+)
+
+interface ServicesRouteChildren {
+  ServicesAutomationRoute: typeof ServicesAutomationRoute
+  ServicesConsultingRoute: typeof ServicesConsultingRoute
+  ServicesTransformationRoute: typeof ServicesTransformationRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAutomationRoute: ServicesAutomationRoute,
+  ServicesConsultingRoute: ServicesConsultingRoute,
+  ServicesTransformationRoute: ServicesTransformationRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/posts': typeof PostsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
+  '/about': typeof AboutRouteWithChildren
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/deferred': typeof DeferredRoute
+  '/faq': typeof FaqRoute
   '/redirect': typeof RedirectRoute
+  '/resources': typeof ResourcesRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/about/story': typeof AboutStoryRoute
+  '/about/team': typeof AboutTeamRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/resources/webinars': typeof ResourcesWebinarsRoute
+  '/resources/whitepapers': typeof ResourcesWhitepapersRoute
+  '/services/automation': typeof ServicesAutomationRoute
+  '/services/consulting': typeof ServicesConsultingRoute
+  '/services/transformation': typeof ServicesTransformationRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -298,9 +565,24 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
+  '/about': typeof AboutRouteWithChildren
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/deferred': typeof DeferredRoute
+  '/faq': typeof FaqRoute
   '/redirect': typeof RedirectRoute
+  '/resources': typeof ResourcesRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/about/story': typeof AboutStoryRoute
+  '/about/team': typeof AboutTeamRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/resources/webinars': typeof ResourcesWebinarsRoute
+  '/resources/whitepapers': typeof ResourcesWhitepapersRoute
+  '/services/automation': typeof ServicesAutomationRoute
+  '/services/consulting': typeof ServicesConsultingRoute
+  '/services/transformation': typeof ServicesTransformationRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/posts': typeof PostsIndexRoute
   '/users': typeof UsersIndexRoute
@@ -315,10 +597,25 @@ export interface FileRoutesById {
   '/posts': typeof PostsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '/_pathlessLayout': typeof PathlessLayoutRouteWithChildren
+  '/about': typeof AboutRouteWithChildren
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/deferred': typeof DeferredRoute
+  '/faq': typeof FaqRoute
   '/redirect': typeof RedirectRoute
+  '/resources': typeof ResourcesRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
+  '/about/story': typeof AboutStoryRoute
+  '/about/team': typeof AboutTeamRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/resources/webinars': typeof ResourcesWebinarsRoute
+  '/resources/whitepapers': typeof ResourcesWhitepapersRoute
+  '/services/automation': typeof ServicesAutomationRoute
+  '/services/consulting': typeof ServicesConsultingRoute
+  '/services/transformation': typeof ServicesTransformationRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -334,9 +631,24 @@ export interface FileRouteTypes {
     | '/posts'
     | '/users'
     | ''
+    | '/about'
+    | '/blog'
+    | '/careers'
+    | '/case-studies'
+    | '/contact'
     | '/deferred'
+    | '/faq'
     | '/redirect'
+    | '/resources'
+    | '/services'
+    | '/about/story'
+    | '/about/team'
     | '/posts/$postId'
+    | '/resources/webinars'
+    | '/resources/whitepapers'
+    | '/services/automation'
+    | '/services/consulting'
+    | '/services/transformation'
     | '/users/$userId'
     | '/posts/'
     | '/users/'
@@ -347,9 +659,24 @@ export interface FileRouteTypes {
   to:
     | '/'
     | ''
+    | '/about'
+    | '/blog'
+    | '/careers'
+    | '/case-studies'
+    | '/contact'
     | '/deferred'
+    | '/faq'
     | '/redirect'
+    | '/resources'
+    | '/services'
+    | '/about/story'
+    | '/about/team'
     | '/posts/$postId'
+    | '/resources/webinars'
+    | '/resources/whitepapers'
+    | '/services/automation'
+    | '/services/consulting'
+    | '/services/transformation'
     | '/users/$userId'
     | '/posts'
     | '/users'
@@ -362,10 +689,25 @@ export interface FileRouteTypes {
     | '/posts'
     | '/users'
     | '/_pathlessLayout'
+    | '/about'
+    | '/blog'
+    | '/careers'
+    | '/case-studies'
+    | '/contact'
     | '/deferred'
+    | '/faq'
     | '/redirect'
+    | '/resources'
+    | '/services'
     | '/_pathlessLayout/_nested-layout'
+    | '/about/story'
+    | '/about/team'
     | '/posts/$postId'
+    | '/resources/webinars'
+    | '/resources/whitepapers'
+    | '/services/automation'
+    | '/services/consulting'
+    | '/services/transformation'
     | '/users/$userId'
     | '/posts/'
     | '/users/'
@@ -380,8 +722,16 @@ export interface RootRouteChildren {
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
   UsersRouteRoute: typeof UsersRouteRouteWithChildren
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
+  AboutRoute: typeof AboutRouteWithChildren
+  BlogRoute: typeof BlogRoute
+  CareersRoute: typeof CareersRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
+  ContactRoute: typeof ContactRoute
   DeferredRoute: typeof DeferredRoute
+  FaqRoute: typeof FaqRoute
   RedirectRoute: typeof RedirectRoute
+  ResourcesRoute: typeof ResourcesRouteWithChildren
+  ServicesRoute: typeof ServicesRouteWithChildren
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
 
@@ -390,8 +740,16 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRouteRoute: PostsRouteRouteWithChildren,
   UsersRouteRoute: UsersRouteRouteWithChildren,
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
+  AboutRoute: AboutRouteWithChildren,
+  BlogRoute: BlogRoute,
+  CareersRoute: CareersRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
+  ContactRoute: ContactRoute,
   DeferredRoute: DeferredRoute,
+  FaqRoute: FaqRoute,
   RedirectRoute: RedirectRoute,
+  ResourcesRoute: ResourcesRouteWithChildren,
+  ServicesRoute: ServicesRouteWithChildren,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
 
@@ -409,8 +767,16 @@ export const routeTree = rootRoute
         "/posts",
         "/users",
         "/_pathlessLayout",
+        "/about",
+        "/blog",
+        "/careers",
+        "/case-studies",
+        "/contact",
         "/deferred",
+        "/faq",
         "/redirect",
+        "/resources",
+        "/services",
         "/posts_/$postId/deep"
       ]
     },
@@ -437,11 +803,48 @@ export const routeTree = rootRoute
         "/_pathlessLayout/_nested-layout"
       ]
     },
+    "/about": {
+      "filePath": "about.tsx",
+      "children": [
+        "/about/story",
+        "/about/team"
+      ]
+    },
+    "/blog": {
+      "filePath": "blog.tsx"
+    },
+    "/careers": {
+      "filePath": "careers.tsx"
+    },
+    "/case-studies": {
+      "filePath": "case-studies.tsx"
+    },
+    "/contact": {
+      "filePath": "contact.tsx"
+    },
     "/deferred": {
       "filePath": "deferred.tsx"
     },
+    "/faq": {
+      "filePath": "faq.tsx"
+    },
     "/redirect": {
       "filePath": "redirect.tsx"
+    },
+    "/resources": {
+      "filePath": "resources.tsx",
+      "children": [
+        "/resources/webinars",
+        "/resources/whitepapers"
+      ]
+    },
+    "/services": {
+      "filePath": "services.tsx",
+      "children": [
+        "/services/automation",
+        "/services/consulting",
+        "/services/transformation"
+      ]
     },
     "/_pathlessLayout/_nested-layout": {
       "filePath": "_pathlessLayout/_nested-layout.tsx",
@@ -451,9 +854,37 @@ export const routeTree = rootRoute
         "/_pathlessLayout/_nested-layout/route-b"
       ]
     },
+    "/about/story": {
+      "filePath": "about/story.tsx",
+      "parent": "/about"
+    },
+    "/about/team": {
+      "filePath": "about/team.tsx",
+      "parent": "/about"
+    },
     "/posts/$postId": {
       "filePath": "posts.$postId.tsx",
       "parent": "/posts"
+    },
+    "/resources/webinars": {
+      "filePath": "resources/webinars.tsx",
+      "parent": "/resources"
+    },
+    "/resources/whitepapers": {
+      "filePath": "resources/whitepapers.tsx",
+      "parent": "/resources"
+    },
+    "/services/automation": {
+      "filePath": "services/automation.tsx",
+      "parent": "/services"
+    },
+    "/services/consulting": {
+      "filePath": "services/consulting.tsx",
+      "parent": "/services"
+    },
+    "/services/transformation": {
+      "filePath": "services/transformation.tsx",
+      "parent": "/services"
     },
     "/users/$userId": {
       "filePath": "users.$userId.tsx",
