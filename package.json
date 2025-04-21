@@ -3,6 +3,9 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "engines": {
+    "node": "18.20.8"
+  },
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
