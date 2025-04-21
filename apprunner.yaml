@@ -4,6 +4,7 @@ build:
   commands:
     build:
       - npm install
+      - npm install @rollup/rollup-linux-x64-gnu
       - npm run build
 run: 
   command: npm run start
