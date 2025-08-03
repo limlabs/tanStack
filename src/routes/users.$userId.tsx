@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import axios from 'redaxios'
-import type { User } from '~/utils/users'
-import { DEPLOY_URL } from '~/utils/users'
-import { NotFound } from '~/components/NotFound'
-import { UserErrorComponent } from '~/components/UserError'
+import type { User } from 'src/utils/users'
+import { DEPLOY_URL } from 'src/utils/users'
+import { NotFound } from 'src/components/NotFound'
+import { UserErrorComponent } from 'src/components/UserError'
 
 export const Route = createFileRoute('/users/$userId')({
   loader: async ({ params: { userId } }) => {
